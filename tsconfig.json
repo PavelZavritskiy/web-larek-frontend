@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "incremental": true,
     "noImplicitAny": true,
     "module": "es6",
     "target": "es2017",
@@ -8,5 +9,5 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
   },
-  //"include": ["src/index.ts", "src/types/*.d.ts"]
+  "include": ["src/index.ts", "src/types/*.d.ts"]
 }
