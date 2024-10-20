@@ -42,7 +42,7 @@ yarn build
 ```
 ## Данные и типы данных используемые в приложении
 
-Данные продукта
+Интерфейс для данных продукта
 
 ```
 interface IProduct {
@@ -55,7 +55,7 @@ interface IProduct {
 }
 ```
 
-Данные клиента
+Интерфейс для данных клиента
 ```
 interface IClient {
   email: string;
@@ -65,7 +65,7 @@ interface IClient {
 }
 ```
 
-Интерфейс для модели данных продуктов
+Интерфейс для коллекции данных продуктов
 ```
 interface IProductData {
   products: IProduct[];
@@ -73,19 +73,19 @@ interface IProductData {
 }
 ```
 
-Данные продукта используемые в корзине
+Тип для данных продукта используемых в корзине
 ```
 type TProductInfo = Pick<IProduct, 'tittle' | 'price' | 'id'>
 ```
 
-Данные пользователь используемые в форме выбора адреса доставки и способа оплаты
+Тип для данных заказа используемых в форме выбора адреса доставки и способа оплаты
 ```
-type TClientOrderData = Pick<IClient, 'payMethod' | 'address'>
+type TOrderAddressAndPayment= Pick<IOrder, 'payMethod' | 'address'>
 ```
 
-Данные пользователя используемые в форме с коммуникацией
+Тип для данных заказа используемых в форме с коммуникацией
 ```
-type TClientCommunication = Pick<IClient, 'email' | 'phoneNumber'>
+type TOrderCommunication = Pick<IOrder, 'email' | 'phoneNumber'>
 ```
 
 ## Архитектура приложения

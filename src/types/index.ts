@@ -7,7 +7,7 @@ export interface IProduct {
   price: number;
 }
 
-export interface IClient {
+export interface IOrder {
   email: string;
   address: string;
   phoneNumber: string;
@@ -23,6 +23,6 @@ export interface IProductData {
 
 export type TProductInfo = Pick<IProduct, 'tittle' | 'price' | 'id'>
 
-export type TClientOrderData = Pick<IClient, 'payMethod' | 'address'>
+export type TOrderAddressAndPayment= Pick<IOrder, 'payMethod' | 'address'>
 
-export type TClientCommunication = Pick<IClient, 'email' | 'phoneNumber'>
+export type TOrderCommunication = Pick<IOrder, 'email' | 'phoneNumber'>
