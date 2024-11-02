@@ -392,3 +392,5 @@ type FormErrors = Partial<Record<keyof IOrder, string>>;
 - `success:submit` - закрытие  формы успешного заказа
 - `modal:open` - модальное окно открыто
 - `modal:close` - модальное окно закрыто
+
+## Ссылка на <a href="https://github.com/PavelZavritskiy/web-larek-frontend" target="_blank">репозиторий</a>
