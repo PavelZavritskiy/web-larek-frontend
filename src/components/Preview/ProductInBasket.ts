@@ -1,5 +1,5 @@
-import { ProductsBase } from "./common/ProductBase";
-import { IEvents } from "./base/EventEmitter";
+import { ProductsBase } from "../common/ProductBase";
+import { IEvents } from "../base/EventEmitter";
 
 
 

@@ -1,13 +1,13 @@
-import { ProductsFull} from "./common/ProductFull";
-import { IEvents } from "./base/EventEmitter";
-import { ensureElement } from "../utils/utils";
+import { ProductsFull} from "../common/ProductFull";
+import { IEvents } from "../base/EventEmitter";
+import { ensureElement } from "../../utils/utils";
 
 
 
 export class ProductInModal extends ProductsFull {
   protected _description: HTMLElement;
 
-    constructor (container: HTMLElement, events: IEvents) {
+    constructor (protected container: HTMLElement, events: IEvents) {
         super(container, events);
 
         this._description = ensureElement<HTMLElement>('.card__text', container);
@@ -21,7 +21,7 @@ export class ProductInModal extends ProductsFull {
 		this.setText(this._description, value);
 	};
 
-    set inCart(value: boolean) {
+    set inBasket(value: boolean) {
         this.setDisabled(this._button, value);
         if (value === true) {
             this.setText(this._button, 'Уже в корзине');

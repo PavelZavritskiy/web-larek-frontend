@@ -9,7 +9,7 @@ export interface IProductView {
   title: string;
   category: string;
   price: number;
-	inCart: boolean;
+	inBasket: boolean;
 }
 
 export abstract class ProductsBase extends Component<IProductView> {

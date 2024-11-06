@@ -1,12 +1,12 @@
-import { Form } from "./common/Form";
-import { TOrderAddressAndPayment } from "../types";
-import { IEvents } from "./base/EventEmitter";
-import { ensureAllElements } from "../utils/utils";
+import { Form } from "../common/Form";
+import { TOrderAddressAndPayment } from "../../types";
+import { IEvents } from "../base/EventEmitter";
+import { ensureAllElements } from "../../utils/utils";
 
 export class AddressAndPayment extends Form<TOrderAddressAndPayment> {
     protected _paymentButtons: HTMLButtonElement[];
 
-    constructor(container: HTMLFormElement, events: IEvents) {
+    constructor(protected container: HTMLFormElement, events: IEvents) {
         super(container, events);
         this._paymentButtons = ensureAllElements('.button_alt', this.container);
 
@@ -28,7 +28,4 @@ export class AddressAndPayment extends Form<TOrderAddressAndPayment> {
         (this.container.elements.namedItem('address') as HTMLInputElement).value = value;
     }
 
-    set valid(value: boolean) {
-        this.setDisabled(this._submit, !value);
-    }
 }

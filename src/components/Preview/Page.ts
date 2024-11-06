@@ -1,6 +1,6 @@
-import { Component } from "./base/Component";
-import { IEvents } from "./base/EventEmitter";
-import { ensureElement } from "../utils/utils";
+import { Component } from "../base/Component";
+import { IEvents } from "../base/EventEmitter";
+import { ensureElement } from "../../utils/utils";
 
 
 interface IPage {
@@ -37,10 +37,6 @@ export class Page extends Component<IPage> {
     }
     
     set locked(value: boolean) {
-        if (value) {
-            this.toggleClass(this._pageWrapper, 'page__wrapper_locked', true);
-        } else {
-            this.toggleClass(this._pageWrapper, 'page__wrapper_locked', false);
-        }
+        this.toggleClass(this._pageWrapper, 'page__wrapper_locked', value);
     }
 }

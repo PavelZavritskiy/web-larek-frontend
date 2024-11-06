@@ -1,10 +1,10 @@
-import { Form } from './common/Form';
-import { TOrderCommunication } from './../types/index';
-import { IEvents } from './base/EventEmitter';
+import { Form } from '../common/Form';
+import { TOrderCommunication } from '../../types/index';
+import { IEvents } from '../base/EventEmitter';
 
 
 export class Communication extends Form<TOrderCommunication> {
-    constructor(container: HTMLFormElement, events: IEvents) {
+    constructor(protected container: HTMLFormElement, events: IEvents) {
         super(container, events);
     }
 
@@ -16,7 +16,4 @@ export class Communication extends Form<TOrderCommunication> {
         (this.container.elements.namedItem('email') as HTMLInputElement).value = value;
     }
 
-    set valid(value: boolean) {
-        this.setDisabled(this._submit, !value);
-    }
 }

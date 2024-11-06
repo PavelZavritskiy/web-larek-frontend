@@ -1,20 +1,20 @@
 import './scss/styles.scss';
-import { ProductInBasket } from './components/ProductInBasket';
-import { ProductInCatalog } from './components/ProductInCatalog';
-import { Success } from './components/Sucsess';
-import { Communication } from './components/Communication';
-import { AddressAndPayment } from './components/AddressAndPayment';
-import { Modal } from './components/common/Modal';
-import { Page } from './components/Page';
-import { Order } from './model/Order'
-import { appApi } from './components/base/AppApi';
-import { ProductInModal } from './components/ProductInModal';
-import { BasketPreview } from './components/BasketPreview';
-import { Basket } from './model/Basket';
-import { EventEmitter } from './components/base/EventEmitter';
-import { Products } from './model/Products';
 import { cloneTemplate, ensureElement } from './utils/utils';
-import { IProduct, TOrderAddressAndPayment, TOrderCommunication } from './types';
+import { EventEmitter } from './components/base/EventEmitter';
+import { appApi } from './components/AppApi';
+import { Modal } from './components/common/Modal';
+import { Products } from './components/model/Products';
+import { Basket } from './components/model/Basket';
+import { Order } from './components/model/Order';
+import { IProduct, TOrderAddressAndPayment, TOrderCommunication } from './types/index';
+import { Page } from './components/Preview/Page';
+import { ProductInCatalog } from './components/Preview/ProductInCatalog';
+import { ProductInModal } from './components/Preview/ProductInModal';
+import { BasketPreview } from './components/Preview/BasketPreview';
+import { ProductInBasket } from './components/Preview/ProductInBasket';
+import { AddressAndPayment } from './components/Preview/AddressAndPayment';
+import { Communication } from './components/Preview/Communication';
+import { Success } from './components/Preview/Success';
 
 //Экземпляр эвент эмитера
 const events = new EventEmitter();
@@ -64,7 +64,7 @@ events.on('product:select', (data: {id: string}) => {
 events.on('product:selected', (preview:IProduct) => {
     const previewElement = productInModal.render({
         ...preview, 
-        inCart: basketData.inBasket(preview.id)
+        inBasket: basketData.inBasket(preview.id)
     });
     modal.render({content: previewElement});
 });
@@ -78,14 +78,14 @@ events.on('product:buy', (data: {id: string}) => {
 
 //Изменение данных корзины
 events.on('basket:changed', () => {   
-    const productsinCartArray = 
+    const productsInBasketArray = 
         basketData.products.map(product => 
             new ProductInBasket(cloneTemplate(productBasketTemplate), events)
                 .render(product));
     basket.render({
-        items: productsinCartArray, 
+        items: productsInBasketArray, 
         total: basketData.getTotalPrice(), 
-        index: productsinCartArray, 
+        index: productsInBasketArray, 
         isEmpty: basketData.isEmpty(),
     });
     page.render({counter: basketData.getCount()});

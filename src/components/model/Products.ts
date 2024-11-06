@@ -1,5 +1,6 @@
-import { IProduct, IProducts } from "../types";
-import { IEvents } from "../components/base/EventEmitter";
+import { IProduct, IProducts } from '../../types/index';
+import { IEvents } from '../base/EventEmitter';
+
 
 
 export class Products implements IProducts {
@@ -19,7 +20,7 @@ export class Products implements IProducts {
         return this._products;
     };
 
-   getProduct(productId: string) {
+   getProduct(productId: string): IProduct {
       return this._products.find((item) => item.id === productId);
   };
 }

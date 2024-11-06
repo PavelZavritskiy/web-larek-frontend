@@ -1,4 +1,3 @@
-import { IProduct } from './../../types/index';
 import {Component} from "../base/Component";
 import { IEvents } from "../base/EventEmitter";
 import {ensureElement} from "../../utils/utils";
@@ -31,13 +30,25 @@ export class Modal extends Component<IModalData> {
         this._content.replaceChildren(value);
     }
 
+    _toggleModal(state: boolean = true) {
+        this.toggleClass(this.container, 'modal_active', state);
+    }
+    
+    _handleEscape = (evt: KeyboardEvent) => {
+        if (evt.key === 'Escape') {
+            this.close();
+        }
+    };
+
     open() {
-        this.toggleClass(this.container, 'modal_active', true);
+        this._toggleModal();
+        document.addEventListener('keydown', this._handleEscape);
         this.events.emit('modal:open');
     }
 
     close() {
-        this.toggleClass(this.container, 'modal_active', false);
+        this._toggleModal(false); 
+        document.removeEventListener('keydown', this._handleEscape);
         this.content = null;
         this.events.emit('modal:close');
     }
@@ -47,4 +58,6 @@ export class Modal extends Component<IModalData> {
         this.open();
         return this.container;
     }
+
+    
 }

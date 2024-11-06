@@ -1,6 +1,7 @@
-import { Component } from "./base/Component";
-import { EventEmitter } from "./base/EventEmitter";
-import { createElement, ensureElement, formatNumber } from "../utils/utils";
+import { Component } from "../base/Component";
+import { IEvents } from "../base/EventEmitter";
+import { createElement, ensureElement, formatNumber } from "../../utils/utils";
+
 
 
 interface IBasketPreview {
@@ -15,7 +16,7 @@ export class BasketPreview extends Component<IBasketPreview> {
     protected _total: HTMLElement;
     protected _button: HTMLButtonElement;
 
-    constructor(container: HTMLElement, protected events: EventEmitter) {
+    constructor(container: HTMLElement, protected events: IEvents) {
         super(container);
 
         this._list = ensureElement<HTMLElement>('.basket__list', container);
@@ -44,8 +45,8 @@ export class BasketPreview extends Component<IBasketPreview> {
     set index(items: HTMLElement[]) {
         if (items) {
             for (let i = 0; i < items.length; i++) {
-                const index = items[i].querySelector('.basket__item-index');
-                index.textContent = `${i + 1}`
+                const index = items[i].querySelector('.basket__item-index') as HTMLElement;
+                this.setText(index, `${i + 1}`);
             }            
         };
     };

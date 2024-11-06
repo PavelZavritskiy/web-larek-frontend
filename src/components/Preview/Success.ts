@@ -1,6 +1,6 @@
-import { Component } from "./base/Component";
-import { IEvents } from "./base/EventEmitter";
-import { ensureElement, formatNumber } from "../utils/utils";
+import { Component } from "../base/Component";
+import { IEvents } from "../base/EventEmitter";
+import { ensureElement, formatNumber } from "../../utils/utils";
 
 
 interface ISuccess {
@@ -12,7 +12,7 @@ export class Success extends Component<ISuccess> {
     protected _total: HTMLElement;
     protected events: IEvents;
 
-    constructor(container: HTMLElement, events: IEvents) {
+    constructor(protected container: HTMLElement, events: IEvents) {
         super(container);
         this.events = events;
         

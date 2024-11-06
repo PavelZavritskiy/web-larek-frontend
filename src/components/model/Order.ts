@@ -1,5 +1,5 @@
-import { FormErrors, IOrderData, TOrderAddressAndPayment, TOrderCommunication } from "../types";
-import { IEvents } from "../components/base/EventEmitter";
+import { FormErrors, IOrderData, TOrderAddressAndPayment, TOrderCommunication } from '../../types/index';
+import { IEvents } from '../base/EventEmitter';
 
 
 

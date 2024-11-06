@@ -1,5 +1,6 @@
-import { IEvents } from '../components/base/EventEmitter';
-import { IBasket, TProductBasketInfo } from './../types/index';
+
+import { IEvents } from '../base/EventEmitter';
+import { IBasket, TProductBasketInfo } from '../../types/index';
 
 
 export class Basket implements IBasket {
